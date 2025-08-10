@@ -18,6 +18,8 @@ It's a panel that you can hand on your wall, like a picture. It has a couple of 
 
 If the "something" is working, a corresponding LED lights up green, otherwise red. Simple, eh?
 
+[Built into picture frame](images/front%20with%20frame.JPG)
+
 ## History
 
 To help phone support for (elderly) relatives with Internet trouble, I needed a solution that narrows down the problem space quickly. Asking "which lights are red?" is way easier than asking "can you ping Google?" or "does the IMAP server respond?".
@@ -42,7 +44,7 @@ Most old Micro-USB wall warts (leftovers from old mobile phones, for example) wi
 
 Do what you like, but an easy and professional-looking case is a picture frame.
 
-IKEA has nice picture frames (like RÖDALM) where you can hide all the electronics inside. 
+IKEA has nice picture frames (like RÖDALM) where you can hide all the electronics inside. ![Image of the build from the back](images/back.JPG)
 
 - File a slot for the Micro USB cable.
 
@@ -53,6 +55,7 @@ IKEA has nice picture frames (like RÖDALM) where you can hide all the electroni
 - Print a legend (you can use the Word file in the repo for inspiration). Do not punch holes for the LED; regular printer paper works as a diffusor for a nice even light. Stick the printed paper to the cardboard. 
 - Affix the LED strip(s) to the back of the cardboard, e.g. with duct tape. 
 - Assemble the frame, using the matte provided by IKEA.
+![assembly](images/without%20frame.JPG)
 
 ## Firmware
 
@@ -61,6 +64,8 @@ Install these libraries, using the Library Manager:
 
 - Adafruit Neopixel
 - HTTP Client
+
+I'll build on a "clean" computer and see if other non-default libraries are needed.
 
 In the sketch, adjust #define NUM_PIXELS 10 to the number of LEDs you decided on. One column of 5 LEDs works well with a 6x10" frame, as do two columns of 5 for a total of 10 LEDs. For my relatives, I keep it simple with 5 LEDs (WiFi, home router, Google aka "the Internet", the family email server, and their bank) while my own setup currently has 10.
 
@@ -71,7 +76,7 @@ Compile and uplaod the sketch. It's completely self-contained and does not need 
 
 Upon first start, the ESP does not know your WiFi credentials, so it opens its own WiFi network. All the LEDs will light up yelllow to indicate this.
 
-- Connect your computer or phone to the **Wifi_Statuslight** network.
+- Connect your computer or phone to the **hass-led-panel** network. This network shows up only if there are no WiFi credentials stored.
 - Open http://192.168.4.1 in your web browser.
 - Enter your home WiFi credentials (SSID aka network name and password) and click submit.
 
@@ -85,6 +90,8 @@ The ESP will now restart. All the LEDs will light up blue one by one.
   - Open the **Serial Monitor** in the Arduino IDE, it will tell you the IP address.
 - Let's say the IP address is *192.168.178.54*.
 - Open http://192.168.178.54 in a web browser. The config page appears. Make the necessary entries and click *Submit*.
+
+![Screenshot of configuration page](images/Configuration%20page%20screenshot.png)
 
 There is one line per LED (the first LED is reserved for the WiFi status as none of the other tests makes sense when the MCU can't connect to the WiFi).
 
