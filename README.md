@@ -97,15 +97,15 @@ There is one line per LED (the first LED is reserved for the WiFi status as none
 
 Each line is a "pseudo-URL"; the possible values are
 
-| Type  | Syntax                            |                                | Example                      |
-|-------|-----------------------------------|--------------------------------|------------------------------|
-| ping  | ping://host                       | Pings the host                 | ping://8.8.8.8               |
-| http  | http://host[:port]                | Connects to web server         | http://hass.example.org:8123 |
-| https | https://host[:port]               | Connects to web server         | https://google.com           |
-| tcp   | tcp://host:port                   | Connects to TCP port           | tcp://imaps.example.org:993  |
-| udp   | udp://host:port                   | Sends UDP packet               | udp://ns.example.org:53      |
-| hass  | hass://entity_id:red:yellow:green | Queries HASS for entity status | hass://entity_id             |
-| null  | null://                           | Do nothing (LED stays black)   | null://reserved for foobar   |
+| Type  | Syntax                            |                                | Example                         |
+|-------|-----------------------------------|--------------------------------|---------------------------------|
+| ping  | ping://host                       | Pings the host                 | ping://8.8.8.8                  |
+| http  | http://host[:port]                | Connects to web server         | http://hass.example.org:8123    |
+| https | https://host[:port]               | Connects to web server         | https://google.com              |
+| tcp   | tcp://host:port                   | Connects to TCP port           | tcp://imaps.example.org:993     |
+| udp   | udp://host:port                   | Sends UDP packet               | udp://ns.example.org:53         |
+| hass  | hass://entity_id:red:yellow:green | Queries HASS for entity status | hass://switch.switch_23:on::off |
+| null  | null://                           | Do nothing (LED stays black)   | null://reserved for foobar      |
 
 - Below the URLs, there ar for additional, global variables:
   - Timeout: Timeout (in seconds) until a reques is considered failed; the LED turns orange. Not implemented for all URL types!
@@ -131,6 +131,9 @@ Some things I'm considering, although there is no time plan yet:
 - a Test button next to each line of the config screen
 - syntax check before saving configuration
 - a single "Acknowledge" hardware button that sets a Home Assistant entity to "on". This would work nicely to acknowledge alarms or messages like "you have mail" by triggering some automation in Home Assistant.
+- a password for updating the configuration to provide (minimal) security against tampering
+- make the loop time user-configurable
+- caching results to re-test less ofen if the last test was successful (e.g., re-test on "green" every minute but on "red" every 10 seconds)
 
 ## License
 
