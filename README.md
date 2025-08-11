@@ -34,7 +34,7 @@ The core is an ESP8266 board. I use Wemos D1 Mini clones, they are cheap and pow
 
 ### LED strip
 
-Any strip compatible with the Adafruit Neopixel library will do; WS2811 or 8212B chips work well.
+Any strip compatible with the Adafruit Neopixel library running on 5 Volt power will do; WS2811 or 8212B chips work well. There are also strips powered with 12V, I do not recommend those as the higher power is not needed for a few LEDs and complicates matters (you'd need a 12V power supply and probably an 7805 or similar regulator to power the ESP, unless your board already includes it).
 
 ### Power supply
 
@@ -55,7 +55,7 @@ IKEA has nice picture frames (like RÖDALM) where you can hide all the electroni
 - Print a legend (you can use the Word file in the repo for inspiration). Do not punch holes for the LED; regular printer paper works as a diffusor for a nice even light. Stick the printed paper to the cardboard. 
 - Affix the LED strip(s) to the back of the cardboard, e.g. with duct tape. 
 - Assemble the frame, using the matte provided by IKEA.
-![assembly](images/without%20frame.JPG)
+![assembly](images/without%20frame.JPG) ![wiring diagram](images/D1Mini_WS8211_wiring.png)
 
 ## Firmware
 
